@@ -1,1 +1,62 @@
-<p>customer-edit works!</p>
+<div class="card">
+    <div class="card-body">
+      <form [formGroup]="angForm" novalidate>
+        <div class="form-group">
+          <label class="col-md-4">Customer Id</label>
+          <input type="text" class="form-control" 
+            formControlName="CustomerId" 
+            #CustomerId 
+            [(ngModel)] = "customer.id"/>
+        </div>
+        <div *ngIf="angForm.controls['CustomerId'].invalid && (angForm.controls['CustomerId'].dirty || angForm.controls['CustomerId'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['CustomerId'].errors.required">
+            Customer id.
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4">Costumer Name </label>
+          <input type="text" class="form-control" 
+            formControlName="CustomerName" 
+            #CustomerName 
+            [(ngModel)] = "customer.name"/>
+        </div>
+        <div *ngIf="angForm.controls['CustomerName'].invalid && (angForm.controls['CustomerName'].dirty || angForm.controls['CustomerName'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['CustomerName'].errors.required">
+            Customer name is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4">Customer Credit Limit</label>
+          <input type="text" class="form-control" 
+            formControlName="CustomerCreditLimit" 
+            #CustomerCreditLimit
+            [(ngModel)] = "customer.creditLimit"
+          />
+        </div>
+        <div *ngIf="angForm.controls['CustomerCreditLimit'].invalid && (angForm.controls['CustomerCreditLimit'].dirty || angForm.controls['CustomerCreditLimit'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['CustomerCreditLimit'].errors.required">
+            Customer Credit Limit is required.
+          </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4">Customer State</label>
+            <input type="text" class="form-control" 
+              formControlName="CustomerState" 
+              #CustomerState
+              [(ngModel)] = "customer.state"
+            />
+          </div>
+          <div *ngIf="angForm.controls['CustomerState'].invalid && (angForm.controls['CustomerState'].dirty || angForm.controls['CustomerState'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['CustomerState'].errors.required">
+              Customer state is required.
+            </div>
+          </div>
+          <div class="form-group">
+          <button (click) = "updateCustomer(CustomerId.value, CustomerName.value, CustomerCreditLimit.value, CustomerState.value )" type="submit" class="btn btn-primary"
+          [disabled]="angForm.invalid" >
+            Update Customer
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>

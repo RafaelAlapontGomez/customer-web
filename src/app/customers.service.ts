@@ -26,4 +26,28 @@ export class CustomersService {
            .http
            .get(`${this.uri}`);
   }
+
+  editCustomer(id) {
+    console.log(id);
+    return this
+            .http
+            .get(`${this.uri}/${id}`);
+    }
+
+    updateCustomer( id, name, creditLimit, state) {
+      console.log(id);
+      console.log(name);
+      console.log(creditLimit);
+      console.log(state);
+      const obj = {
+        id,
+        name,
+        creditLimit,
+        state
+        };
+      this
+        .http
+        .put(`${this.uri}/${id}`, obj)
+        .subscribe(res => console.log('Done'));
+  }
 }
