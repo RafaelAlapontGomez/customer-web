@@ -11,7 +11,7 @@ import { CustomersService } from '../customers.service';
 export class CustomerEditComponent implements OnInit {
 
   angForm: FormGroup;
-  customer: any = {};
+  customer: any = {}; 
 
   constructor(private route: ActivatedRoute, private router: Router, private ps: CustomersService, private fb: FormBuilder) { 
     this.createForm();
